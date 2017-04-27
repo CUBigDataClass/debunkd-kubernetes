@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: spark-master
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spark
+    spec:
+      containers:
+      - name: spark-master
+        image: gettyimages/spark
+        ports:
+        - containerPort: 4040
+        - containerPort: 6066
+        - containerPort: 7077
+        - containerPort: 8080

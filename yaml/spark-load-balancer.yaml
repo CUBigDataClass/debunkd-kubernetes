@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: spark-load-balancer
+  labels:
+    app: spark
+spec:
+  selector:
+    app: spark
+  ports:
+    - protocol: "TCP"
+      port: 7077
+      nodePort: 7077
+      name: test
+    - protocol: "TCP"
+      port: 8080
+      nodePort: 8080
+      name: test2
+  type: LoadBalancer
+  loadBalancerIP: 52.40.190.188

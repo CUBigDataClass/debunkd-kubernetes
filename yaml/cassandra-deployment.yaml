@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: cassandra
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cassandra
+    spec:
+      containers:
+      - name: cassandra
+        image: cassandra
+        env:
+        - name: CASSANDRA_SEEDS
+          value: cassandra-seed

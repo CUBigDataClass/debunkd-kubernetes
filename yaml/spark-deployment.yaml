@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: spark-deployment
+spec:
+  replicas: 8
+  template:
+    metadata:
+      labels:
+        app: spark
+    spec:
+      containers:
+      - name: spark
+        image: gettyimages/spark
+        command:
+          - bin/spark-class
+          - org.apache.spark.deploy.worker.Worker
+          - spark://spark-master:7077
+        ports:
+        - containerPort: 8081
