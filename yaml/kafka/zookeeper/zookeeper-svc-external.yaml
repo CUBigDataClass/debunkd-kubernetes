@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: zookeeper-external
 spec:
+  type: NodePort
   ports:
   - port: 2181
     name: client
