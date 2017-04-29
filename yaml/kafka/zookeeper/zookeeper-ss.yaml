@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: zookeeper
+  namespace: kafka
+spec:
+  serviceName: zookeeper
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: zookeeper
+          image: solsson/zookeeper-statefulset
+          env:
+            - name: ZOO_SERVERS
+              value: server.1=zookeeper-0.zookeeper:2888:3888:participant server.2=zookeeper-1.zookeeper:2888:3888:participant server.3=zookeeper-2.zookeeper:2888:3888:participant server.4=zookeeper-3.zookeeper:2888:3888:participant server.5=zookeeper-4.zookeeper:2888:3888:participant
+          ports:
+            - containerPort: 2181
+              name: client
+            - containerPort: 2888
+              name: peer
+            - containerPort: 3888
+              name: leader-election
+          volumeMounts:
+            - name: datadir
+              mountPath: /data
+      volumes:
+        - name: datadir
+          emptyDir: {}
