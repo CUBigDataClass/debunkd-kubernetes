@@ -13,7 +13,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: zookeeper
-          image: solsson/zookeeper-statefulset
+          image: solsson/zookeeper-statefulset:3.4.9
           env:
             - name: ZOO_SERVERS
               value: server.1=zookeeper-0.zookeeper:2888:3888:participant server.2=zookeeper-1.zookeeper:2888:3888:participant server.3=zookeeper-2.zookeeper:2888:3888:participant server.4=zookeeper-3.zookeeper:2888:3888:participant server.5=zookeeper-4.zookeeper:2888:3888:participant
