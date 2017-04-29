@@ -13,16 +13,8 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: broker
-        image: solsson/kafka-persistent:0.10.1
+        image: wurstmeister/kafka
         ports:
         - containerPort: 9092
-        command:
-        - sh
-        - -c
-        - "./bin/kafka-server-start.sh config/server.properties --override broker.id=$(hostname | awk -F'-' '{print $2}')"
-        volumeMounts:
-        - name: datadir
-          mountPath: /opt/kafka/data
-      volumes:
-        - name: datadir
-          emptyDir: {}
+        env:
+        - KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
