@@ -11,4 +11,4 @@ spec:
     spec:
       containers:
       - name: sb-web
-        image: localhost:5000/sb-web
+        image: hexacyanide/sb-web
