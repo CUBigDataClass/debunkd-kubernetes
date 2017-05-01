@@ -1,14 +1,14 @@
 apiVersion: "apps/v1beta1"
 kind: StatefulSet
 metadata:
-  name: cassandra
+  name: cassandra2
 spec:
-  serviceName: cassandra
+  serviceName: cassandra2
   replicas: 8
   template:
     metadata:
       labels:
-        app: cassandra
+        app: cassandra2
     spec:
       containers:
       - name: cassandra
