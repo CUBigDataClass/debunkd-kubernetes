@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: cassandra
+  name: cassandra2
   # The labels will be applied automatically
   # from the labels in the pod template, if not set
   # labels:
@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        app: cassandra
+        app: cassandra2
     spec:
       containers:
         - command:
@@ -49,3 +49,9 @@ spec:
               name: jmx
             - containerPort: 9042
               name: cql
+          volumeMounts:
+            - mountPath: /cassandra_data
+              name: data
+      volumes:
+        - name: data
+          emptyDir: {}
