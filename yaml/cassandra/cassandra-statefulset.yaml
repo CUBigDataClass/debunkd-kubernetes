@@ -1,14 +1,14 @@
 apiVersion: "apps/v1beta1"
 kind: StatefulSet
 metadata:
-  name: cassandra2
+  name: cassandra
 spec:
-  serviceName: cassandra2
+  serviceName: cassandra
   replicas: 8
   template:
     metadata:
       labels:
-        app: cassandra2
+        app: cassandra
     spec:
       containers:
       - name: cassandra
@@ -44,7 +44,7 @@ spec:
           - name: HEAP_NEWSIZE
             value: 100M
           - name: CASSANDRA_SEEDS
-            value: "cassandra2-0.cassandra2.default.svc.cluster.local"
+            value: "cassandra-0.cassandra.default.svc.cluster.local"
           - name: CASSANDRA_CLUSTER_NAME
             value: "sb-k8s"
           - name: CASSANDRA_DC

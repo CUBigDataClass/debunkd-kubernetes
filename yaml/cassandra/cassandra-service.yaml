@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: cassandra2
-  name: cassandra2
+    app: cassandra
+  name: cassandra
 spec:
   type: NodePort
   ports:
     - port: 9042
   selector:
-    app: cassandra2
+    app: cassandra
